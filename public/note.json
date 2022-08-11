@@ -1,0 +1,44 @@
+[
+    {
+        "id": 0,
+        "title": "Lorem ipsum dolor",
+        "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque tellus fringilla, placerat lorem eget, pharetra ligula. Pellentesque at sollicitudin quam. Sed sapien est, placerat at felis ac, congue consectetur velit. Integer sit amet lorem aliquet magna fermentum varius. Vivamus id faucibus augue. Donec efficitur porttitor aliquet. Nam consequat ipsum non euismod pulvinar. Nunc mollis est a justo volutpat facilisis ut ac risus. Curabitur turpis eros, sodales suscipit laoreet sodales, elementum eget tortor. Ut eget ante urna.",
+        "color": "#e66465",
+        "date_create": 8737834
+    },
+    {
+        "id": 2,
+        "title": "Очень длинное название заметки",
+        "body": "Тело заметки",
+        "color": "#1890ff",
+        "date_create": 8737834
+    },
+    {
+        "id": 3,
+        "title": "nesciunt quas odio",
+        "body": "repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque",
+        "color": "#f6b73c",
+        "date_create": 8737834
+    },
+    {
+        "id": 4,
+        "title": "magnam facilis autem",
+        "body": "dolore placeat quibusdam ea quo vitae\nmagni quis enim qui quis quo nemo aut saepe\nquidem repellat excepturi ut quia\nsunt ut sequi eos ea sed quas",
+        "color": "#ff00ff",
+        "date_create": 8737834
+    },
+    {
+        "id": 5,
+        "title": "dolorem eum magni eos aperiam quia",
+        "body": "ut aspernatur corporis harum nihil quis provident sequi\nmollitia nobis aliquid molestiae\nperspiciatis et ea nemo ab reprehenderit accusantium quas\nvoluptate dolores velit et doloremque molestiae",
+        "color": "#00b73c",
+        "date_create": 8737834
+    },
+    {
+        "id": 6,
+        "title": "in quibusdam tempore odit est dolorem",
+        "body": "itaque id aut magnam\npraesentium quia et ea odit et ea voluptas et\nsapiente quia nihil amet occaecati quia id voluptatem\nincidunt ea est distinctio odio",
+        "color": "#f6b700",
+        "date_create": 8737834
+    }
+]

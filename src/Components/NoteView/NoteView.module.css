@@ -1,0 +1,34 @@
+.wrapper {
+    height: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background-color: white;
+}
+
+.wrapper > :nth-child(2) {
+    flex-grow: 1;
+}
+
+.titleInput {
+    font-size: 170%;
+    padding: 0;
+}
+
+.bodyInput {
+    resize: none;
+    height: 100% !important;
+}
+
+.colorSpan {
+    width: 100px;
+    text-align: center;
+    line-height: 100%;
+}
+
+.button {
+    width: 100%;
+}

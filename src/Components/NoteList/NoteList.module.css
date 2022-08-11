@@ -1,0 +1,24 @@
+.wrapper {
+    --max-height: calc(100vh - 64px - 100px);
+    --header-height: 33px;
+
+    background-color: white;
+    border-radius: 5px;
+    max-height: var(--max-height);
+    overflow: hidden;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: calc(var(--max-height) - var(--header-height));
+}
+
+.header {
+    height: var(--header-height);
+    padding: 5px;
+    border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+}

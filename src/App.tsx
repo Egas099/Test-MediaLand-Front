@@ -1,12 +1,10 @@
-import React from 'react';
-import './App.css';
+import { useTypedSelector } from './hooks/useTypedRedux';
+import Login from './Pages/Login/Login';
+import Notes from './Pages/Notes/Notes';
 
 function App() {
-  return (
-    <div className="App">
-      Working!
-    </div>
-  );
+    const isAuth = useTypedSelector(state => state.auth.isAuth);
+    return <>{isAuth ? <Notes /> : <Login />}</>;
 }
 
 export default App;
