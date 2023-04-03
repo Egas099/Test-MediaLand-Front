@@ -19,7 +19,7 @@ function useNoteService() {
 
     useEffect(() => {
         dispatch(notesActionCreator.readNotes());
-    }, []);
+    }, [dispatch]);
 
     return {
         list,

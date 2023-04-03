@@ -1,4 +1,3 @@
-import axios from 'axios';
 import auth from '.';
 import { AppDispatch } from '../..';
 import loginService from '../../../api/loginService';
@@ -21,7 +20,7 @@ export const authActionCreator = {
                 dispatch(setError('Неправильный логин или пароль'));
             }
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
         dispatch(setIsLoading(false));
     },

@@ -1,77 +1,79 @@
-import axios from 'axios';
 import { CreateNote, Note, UpdateNote } from '../Models/Note';
-import { getRandomNumber } from '../utils/helpers';
+import { SERVER_URL, SUCCESS_STATUS } from '../utils/constants';
 
-// const NOTE_ROUTE = '/note';
+const NOTE_ROUTE = '/note';
+type Response<T> = {
+    status: string;
+    notes: T;
+};
+const getToken = () => localStorage.getItem('token') || '';
+const prepareHeaders = () => ({ headers: { token: getToken() } });
 
 const noteService = {
     createNote: async (createdNote: CreateNote): Promise<Note> => {
-        // const response = await axios.post<Note>(NOTE_ROUTE, createdNote, {
-        //     headers: {
-        //         token: getToken()
-        //     }
-        // });
-        // return response.data;
-        return {
-            ...createdNote,
-            date_create: Date.now(),
-            id: getRandomNumber()
+        const config: RequestInit = {
+            method: 'POST',
+            body: JSON.stringify(createdNote),
+            ...prepareHeaders()
         };
+
+        const response = (await fetch(SERVER_URL + NOTE_ROUTE, config).then(
+            response => response.json()
+        )) as Response<Note>;
+
+        if (response.status === SUCCESS_STATUS) {
+            return response.notes;
+        } else {
+            throw new Error('Failed to create note');
+        }
     },
     getNotes: async (): Promise<Note[]> => {
-        // const response = await axios.get<GetNoteResponse>(NOTE_ROUTE, {
-        //     headers: {
-        //         token: getToken()
-        //     }
-        // });
-        // if(response.data.status === "ok") {
-        //     return response.data;
-        // } else {
-        //     return;
-        // }
-        return await (
-            await axios.get<Note[]>('./note.json')
-        ).data;
+        const config: RequestInit = {
+            ...prepareHeaders()
+        };
+
+        const response = (await fetch(SERVER_URL + NOTE_ROUTE, config).then(
+            response => response.json()
+        )) as Response<Note[]>;
+
+        if (response.status === SUCCESS_STATUS) {
+            return response.notes;
+        } else {
+            throw new Error('Failed to fetch notes');
+        }
     },
     updateNote: async (updatedNote: UpdateNote): Promise<Note> => {
-        // const response = await axios.put<Note>(
-        //     `${NOTE_ROUTE}/${updatedNote.id}`,
-        //     updatedNote,
-        //     {
-        //         headers: {
-        //             token: getToken()
-        //         }
-        //     }
-        // );
-        // return response.data;
-        return {
-            ...updatedNote,
-            date_create: Date.now()
+        const config: RequestInit = {
+            method: 'PUT',
+            body: JSON.stringify(updatedNote),
+            ...prepareHeaders()
         };
+
+        const response = (await fetch(SERVER_URL + NOTE_ROUTE, config).then(
+            response => response.json()
+        )) as Response<Note>;
+
+        if (response.status === SUCCESS_STATUS) {
+            return response.notes;
+        } else {
+            throw new Error('Failed to update note');
+        }
     },
     deleteNote: async (noteId: number): Promise<boolean> => {
-        // const response = await axios.delete(`${NOTE_ROUTE}/${noteId}`, {
-        //     headers: {
-        //         token: getToken()
-        //     }
-        // });
-        // if (response.status === 204) {
-        // return true;
-        // } else {
-        //     return false;
-        // }
-        return true;
+        const config: RequestInit = {
+            method: 'DELETE',
+            body: JSON.stringify({ id: noteId }),
+            ...prepareHeaders()
+        };
+
+        const response = await fetch(SERVER_URL + NOTE_ROUTE, config);
+
+        if (response.ok) {
+            return true;
+        } else {
+            throw new Error('Failed to delete note');
+        }
     }
 };
 
 export default noteService;
-
-export interface GetNoteResponse {
-    status: string;
-    notes: Note[];
-}
-
-// function getToken() {
-//     const token = localStorage.getItem('token');
-//     return typeof token === 'string' ? token : '';
-// }
