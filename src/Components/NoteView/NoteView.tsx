@@ -19,28 +19,21 @@ const NoteView = ({
     const [editableBody, setEditableBody] = useState('');
     const [editableColor, setEditableColor] = useState('');
 
-    useEffect(() => {
+    const resetFields = () => {
         setEditableTitle(title);
         setEditableBody(body);
         setEditableColor(color);
-    }, [title, body, color]);
+    };
+    useEffect(resetFields, [title, body, color]);
 
-    function save() {
+    const confirmDelete = () => deleteNote(id);
+    const handleSave = () => {
         saveNote({
             id,
             title: editableTitle,
             body: editableBody,
             color: editableColor
         });
-    }
-
-    const confirm = () => {
-        console.log('confirm');
-        deleteNote(id);
-    };
-
-    const cancel = () => {
-        console.log('cansel');
     };
 
     const existUnsavedChanges =
@@ -71,26 +64,31 @@ const NoteView = ({
                     <input
                         value={editableColor}
                         onChange={e => setEditableColor(e.target.value)}
-                        type={'color'}
+                        type="color"
                     />
                 </Space>
                 <Space size="middle">
                     <Popconfirm
-                        title="Are you sure to delete this task?"
-                        onConfirm={confirm}
-                        onCancel={cancel}
+                        title={
+                            existUnsavedChanges
+                                ? 'Вы действительно хотите отменить изменения?'
+                                : 'Вы действительно хотите удалить эту заметку?'
+                        }
+                        onConfirm={
+                            existUnsavedChanges ? resetFields : confirmDelete
+                        }
                         okText="Yes"
                         cancelText="No"
                     >
                         <Button type="primary" danger className={styles.button}>
-                            Удалить
+                            {existUnsavedChanges ? 'Отмена' : 'Удалить'}
                         </Button>
                     </Popconfirm>
                     <Button
                         type="primary"
                         className={styles.button}
                         disabled={!existUnsavedChanges}
-                        onClick={save}
+                        onClick={handleSave}
                     >
                         Сохранить
                     </Button>

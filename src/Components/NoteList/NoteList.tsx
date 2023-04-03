@@ -1,4 +1,4 @@
-import { Button, Card, List, Modal, Row, Typography } from 'antd';
+import { Button, Modal, Row, Typography } from 'antd';
 import { CreateNote, Note } from '../../Models/Note';
 import NoteListItem from './NoteListItem/NoteListItem';
 import styles from './NoteList.module.css';
@@ -20,7 +20,7 @@ const NoteList = ({ noteList, onSelect }: Props) => {
     };
 
     const onSubmitNoteForm = (values: CreateNote) => {
-        createNote(values)
+        createNote(values);
         setIsModalVisible(false);
     };
 

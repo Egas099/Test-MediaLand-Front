@@ -1,12 +1,12 @@
 import { Avatar, Image, Row, Space } from 'antd';
 import { Header } from 'antd/lib/layout/layout';
-import styles from './NavBar.module.css';
+import styles from './AppHeader.module.css';
 import image from '../../images/MdLd_small.bmp';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/useTypedRedux';
 import { authActionCreator } from '../../store/reducers/auth/actionCreator';
 const { logout } = authActionCreator;
 
-const NavBar = () => {
+const AppHeader = () => {
     const dispatch = useTypedDispatch();
     const username = useTypedSelector(state => state.auth.username);
 
@@ -25,4 +25,4 @@ const NavBar = () => {
     );
 };
 
-export default NavBar;
+export default AppHeader;

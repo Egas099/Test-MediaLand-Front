@@ -1,0 +1,9 @@
+:root {
+    --app-header-height: 64px;
+}
+
+.header {
+    height: var(--app-header-height);
+    background-color: white;
+    padding: 0 var(--side-paddings);
+}
