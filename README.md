@@ -8,7 +8,7 @@
 ## Start
 
 -   `npm run start`
--   `npm run backend start`
+-   `npm run backend start` or `python3 backend-test.py`
 
 ## Getting Started with Create React App
 
