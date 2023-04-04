@@ -23,3 +23,10 @@
 .fullHeight{
     height: 100%;
 }
+
+.warnLabel{
+    text-align: center;
+    display: block;
+    padding: 12px;
+    background-color: #B6DFED;
+}

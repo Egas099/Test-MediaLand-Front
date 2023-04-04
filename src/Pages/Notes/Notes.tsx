@@ -4,12 +4,10 @@ import NoteView from 'Components/NoteView/NoteView';
 import { Col, Layout, Row } from 'antd';
 import { Content } from 'antd/lib/layout/layout';
 import { UpdateNote } from 'models/note';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useNoteService from 'shared/hooks/useNoteService';
 import styles from './Notes.module.css';
 
-const emptyText =
-    'Ой, а заметок ещё нет :) нажмите "добавить" в меню с лева, чтобы добавить новую заметку';
 enum MODE {
     VIEW,
     CREATE
@@ -17,6 +15,8 @@ enum MODE {
 
 function Notes() {
     const {
+        error,
+        isLoading,
         list: noteList,
         updateNote,
         deleteNote,
@@ -25,10 +25,13 @@ function Notes() {
     const [viewNoteId, setViewNoteId] = useState(noteList[0]?.id);
     const [mode, setMode] = useState<MODE>(MODE.VIEW);
 
+    useEffect(() => {
+        setViewNoteId(noteList[0]?.id);
+    }, [noteList]);
+
     const handleCreate = ({ body, color, title }: UpdateNote) => {
         setMode(MODE.VIEW);
         createNote({ body, color, title });
-        setViewNoteId(noteList[0]?.id);
     };
     const handleSelect = (noteId: number) => {
         setMode(MODE.VIEW);
@@ -49,6 +52,8 @@ function Notes() {
         [MODE.VIEW]: deleteNote
     }[mode];
 
+    const canViewNote = (noteList.length || mode === MODE.CREATE) && !error;
+
     return (
         <Layout className={styles.layout}>
             <AppHeader />
@@ -66,14 +71,23 @@ function Notes() {
                         />
                     </Col>
                     <Col span={16} className={styles.fullHeight}>
-                        {viewNote ? (
+                        {canViewNote ? (
                             <NoteView
                                 note={viewNote}
                                 onSaveClick={handleSave}
                                 onCancelClick={handleDelete}
                             />
+                        ) : error ? (
+                            <span className={styles.warnLabel}>
+                                Не удалось загрузить заметки
+                            </span>
+                        ) : !isLoading ? (
+                            <span className={styles.warnLabel}>
+                                Ой, а заметок ещё нет :) нажмите "добавить" в
+                                меню с лева, чтобы добавить новую заметку
+                            </span>
                         ) : (
-                            <span>{emptyText}</span>
+                            <span className={styles.warnLabel}>Загрузка</span>
                         )}
                     </Col>
                 </Row>

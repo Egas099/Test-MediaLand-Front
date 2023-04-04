@@ -4,7 +4,7 @@ import { useTypedDispatch, useTypedSelector } from './useTypedRedux';
 import { notesActionCreator } from 'store/reducers/notes/actionCreator';
 
 function useNoteService() {
-    const list = useTypedSelector(state => state.notes.list);
+    const list = useTypedSelector(state => state.notes);
     const dispatch = useTypedDispatch();
 
     useEffect(() => {
@@ -12,7 +12,7 @@ function useNoteService() {
     }, [dispatch]);
 
     return {
-        list,
+        ...list,
         createNote: (note: CreateNote) =>
             dispatch(notesActionCreator.createNote(note)),
 
