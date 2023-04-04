@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/task-front-end-react/static/css/main.1cb3bb2e.css",
+    "main.js": "/task-front-end-react/static/js/main.b4107531.js",
+    "index.html": "/task-front-end-react/index.html",
+    "main.1cb3bb2e.css.map": "/task-front-end-react/static/css/main.1cb3bb2e.css.map",
+    "main.b4107531.js.map": "/task-front-end-react/static/js/main.b4107531.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1cb3bb2e.css",
+    "static/js/main.b4107531.js"
+  ]
+}
