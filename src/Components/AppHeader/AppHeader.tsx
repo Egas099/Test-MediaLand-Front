@@ -18,7 +18,11 @@ const AppHeader = () => {
             <Row justify="space-between" align="middle">
                 <Image src={imageService.headerLogo} preview={false} />
                 <Space>
-                    <span onClick={() => dispatch(logout())}>
+                    <span
+                        className={styles.userName}
+                        onClick={() => dispatch(logout())}
+                        title="Выйти"
+                    >
                         Hello {username}
                     </span>
                     <Avatar />
