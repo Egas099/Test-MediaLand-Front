@@ -2,13 +2,13 @@
 
 ## Install
 
-* `npm install`
-* `pip3 install Flask` // needed python3, pip3 
+-   `npm install`
+-   `pip3 install Flask` // needed python3, pip3
 
 ## Start
 
-* `npm run start`
-* `npm run backend start`
+-   `npm run start`
+-   `npm run backend start`
 
 ## Getting Started with Create React App
 

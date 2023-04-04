@@ -8,4 +8,4 @@ module.exports = {
     useTabs: false,
     jsxBracketSameLine: false,
     arrowParens: 'avoid'
-}
+};
