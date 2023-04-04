@@ -1,4 +1,4 @@
-# Test-MediaLand-Front
+# Test-Front-React
 
 ## Install
 
