@@ -1,45 +1,49 @@
 import { Button, Input, Popconfirm, Row, Space } from 'antd';
 import { useEffect, useState } from 'react';
-import { Note, UpdateNote } from '../../models/note';
+import { CreateNote, UpdateNote } from 'models/note';
 import styles from './NoteView.module.css';
 const { TextArea } = Input;
 
 type Props = {
-    note: Note;
-    deleteNote: (id: number) => void;
-    saveNote: (note: UpdateNote) => void;
+    note: { id?: number } & CreateNote;
+    onCancelClick: (id: number) => void;
+    onSaveClick: (note: UpdateNote) => void;
 };
 
 const NoteView = ({
     note: { id, title, body, color },
-    deleteNote,
-    saveNote
+    onCancelClick,
+    onSaveClick
 }: Props) => {
     const [editableTitle, setEditableTitle] = useState('');
     const [editableBody, setEditableBody] = useState('');
     const [editableColor, setEditableColor] = useState('');
 
     const resetFields = () => {
-        setEditableTitle(title);
-        setEditableBody(body);
-        setEditableColor(color);
+        setEditableTitle(title || '');
+        setEditableBody(body || '');
+        setEditableColor(color || '#ffffff');
     };
     useEffect(resetFields, [title, body, color]);
 
-    const confirmDelete = () => deleteNote(id);
+    const handleDelete = () => onCancelClick(id || -1);
     const handleSave = () => {
-        saveNote({
-            id,
+        onSaveClick({
+            id: id || -1,
             title: editableTitle,
             body: editableBody,
             color: editableColor
         });
     };
 
+    const isValidFields = Boolean(editableTitle && editableBody);
     const existUnsavedChanges =
         title !== editableTitle ||
         body !== editableBody ||
         color !== editableColor;
+    
+    const canSave = existUnsavedChanges && isValidFields;
+    const canCancel = existUnsavedChanges || isValidFields;
 
     return (
         <Space className={styles.wrapper} direction="vertical">
@@ -75,19 +79,25 @@ const NoteView = ({
                                 : 'Вы действительно хотите удалить эту заметку?'
                         }
                         onConfirm={
-                            existUnsavedChanges ? resetFields : confirmDelete
+                            existUnsavedChanges ? resetFields : handleDelete
                         }
                         okText="Yes"
                         cancelText="No"
+                        disabled={!canCancel}
                     >
-                        <Button type="primary" danger className={styles.button}>
+                        <Button
+                            type="primary"
+                            danger
+                            className={styles.button}
+                            disabled={!canCancel}
+                        >
                             {existUnsavedChanges ? 'Отмена' : 'Удалить'}
                         </Button>
                     </Popconfirm>
                     <Button
                         type="primary"
                         className={styles.button}
-                        disabled={!existUnsavedChanges}
+                        disabled={!canSave}
                         onClick={handleSave}
                     >
                         Сохранить

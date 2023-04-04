@@ -7,25 +7,20 @@ function useNoteService() {
     const list = useTypedSelector(state => state.notes.list);
     const dispatch = useTypedDispatch();
 
-    function createNote(note: CreateNote) {
-        dispatch(notesActionCreator.createNote(note));
-    }
-    function updateNote(note: UpdateNote) {
-        dispatch(notesActionCreator.updateNote(note));
-    }
-    function deleteNote(noteId: number) {
-        dispatch(notesActionCreator.deleteNote(noteId));
-    }
-
     useEffect(() => {
         dispatch(notesActionCreator.readNotes());
     }, [dispatch]);
 
     return {
         list,
-        createNote,
-        updateNote,
-        deleteNote
+        createNote: (note: CreateNote) =>
+            dispatch(notesActionCreator.createNote(note)),
+
+        updateNote: (note: UpdateNote) =>
+            dispatch(notesActionCreator.updateNote(note)),
+
+        deleteNote: (noteId: number) =>
+            dispatch(notesActionCreator.deleteNote(noteId))
     };
 }
 
