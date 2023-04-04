@@ -1,5 +1,5 @@
 import { Form, Input } from 'antd';
-import { CreateNote } from '../../Models/Note';
+import { CreateNote } from '../../models/note';
 
 type Props = {
     onSubmit: (note: CreateNote) => void;

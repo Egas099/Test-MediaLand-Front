@@ -1,7 +1,7 @@
 import auth from '.';
 import { AppDispatch } from '../..';
-import loginService from '../../../api/loginService';
-import User from '../../../Models/User';
+import loginService from '../../../shared/api/loginService';
+import User from '../../../models/user';
 const { setError, setIsAuth, setIsLoading, setUsername } = auth.actions;
 
 export const authActionCreator = {

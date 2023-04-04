@@ -1,10 +1,10 @@
 import { Button, Modal, Row, Typography } from 'antd';
-import { CreateNote, Note } from '../../Models/Note';
+import { CreateNote, Note } from '../../models/note';
 import NoteListItem from './NoteListItem/NoteListItem';
 import styles from './NoteList.module.css';
 import NoteForm from '../NoteForm/NoteForm';
 import { useState } from 'react';
-import useNoteService from '../../hooks/useNoteService';
+import useNoteService from '../../shared/hooks/useNoteService';
 
 type Props = {
     noteList: Note[];

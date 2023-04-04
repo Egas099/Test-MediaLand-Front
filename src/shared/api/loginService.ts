@@ -1,5 +1,5 @@
-import User from '../Models/User';
-import { SERVER_URL, SUCCESS_STATUS } from '../utils/constants';
+import User from '../../models/user';
+import { SERVER_URL, SUCCESS_STATUS } from '../constants';
 
 const LOGIN_ROUTE = '/login';
 export interface LoginResponse {
@@ -13,7 +13,7 @@ const loginService = {
             body: JSON.stringify(loginData),
             method: 'POST'
         };
-        
+
         const response = (await fetch(SERVER_URL + LOGIN_ROUTE, config).then(
             response => response.json()
         )) as LoginResponse;

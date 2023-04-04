@@ -1,9 +1,12 @@
 import { Avatar, Image, Row, Space } from 'antd';
 import { Header } from 'antd/lib/layout/layout';
 import styles from './AppHeader.module.css';
-import image from '../../images/MdLd_small.bmp';
-import { useTypedDispatch, useTypedSelector } from '../../hooks/useTypedRedux';
+import {
+    useTypedDispatch,
+    useTypedSelector
+} from '../../shared/hooks/useTypedRedux';
 import { authActionCreator } from '../../store/reducers/auth/actionCreator';
+import { imageService } from 'shared/api/imageService';
 const { logout } = authActionCreator;
 
 const AppHeader = () => {
@@ -13,7 +16,7 @@ const AppHeader = () => {
     return (
         <Header className={styles.header}>
             <Row justify="space-between" align="middle">
-                <Image src={image} preview={false} />
+                <Image src={imageService.headerLogo} preview={false} />
                 <Space>
                     <span onClick={() => dispatch(logout())}>
                         Hello {username}

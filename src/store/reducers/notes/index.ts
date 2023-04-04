@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Note } from '../../../Models/Note';
+import { Note } from '../../../models/note';
 
 export type NotesState = {
     list: Note[];
@@ -36,7 +36,7 @@ const notes = createSlice({
         },
         setError: (state, { payload }: PayloadAction<string>) => {
             state.error = payload;
-        },
+        }
     }
 });
 

@@ -1,6 +1,6 @@
 import { Button, Input, Popconfirm, Row, Space } from 'antd';
 import { useEffect, useState } from 'react';
-import { Note, UpdateNote } from '../../Models/Note';
+import { Note, UpdateNote } from '../../models/note';
 import styles from './NoteView.module.css';
 const { TextArea } = Input;
 

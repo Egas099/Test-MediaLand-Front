@@ -1,4 +1,4 @@
-import { useTypedSelector } from './hooks/useTypedRedux';
+import { useTypedSelector } from './shared/hooks/useTypedRedux';
 import Login from './Pages/Login/Login';
 import Notes from './Pages/Notes/Notes';
 

@@ -1,5 +1,5 @@
-import { CreateNote, Note, UpdateNote } from '../Models/Note';
-import { SERVER_URL, SUCCESS_STATUS } from '../utils/constants';
+import { CreateNote, Note, UpdateNote } from '../../models/note';
+import { SERVER_URL, SUCCESS_STATUS } from '../constants';
 
 const NOTE_ROUTE = '/note';
 type Response<T> = {

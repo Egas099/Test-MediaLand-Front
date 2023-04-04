@@ -1,7 +1,7 @@
+import { CreateNote, UpdateNote } from 'models/note';
+import noteService from 'shared/api/noteService';
+import { AppDispatch } from 'store';
 import notes from '.';
-import { AppDispatch } from '../..';
-import noteService from '../../../api/noteService';
-import { CreateNote, UpdateNote } from '../../../Models/Note';
 const { setNotes, addNote, editNote, removeNote, setIsLoading } = notes.actions;
 
 export const notesActionCreator = {

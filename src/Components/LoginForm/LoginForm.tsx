@@ -1,6 +1,9 @@
 import { Button, Form, Input } from 'antd';
-import { useTypedDispatch, useTypedSelector } from '../../hooks/useTypedRedux';
-import User from '../../Models/User';
+import {
+    useTypedDispatch,
+    useTypedSelector
+} from '../../shared/hooks/useTypedRedux';
+import User from '../../models/user';
 import { authActionCreator } from '../../store/reducers/auth/actionCreator';
 const { login } = authActionCreator;
 

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import { CreateNote, UpdateNote } from '../Models/Note';
-import { notesActionCreator } from '../store/reducers/notes/actionCreator';
+import { CreateNote, UpdateNote } from 'models/note';
 import { useTypedDispatch, useTypedSelector } from './useTypedRedux';
+import { notesActionCreator } from 'store/reducers/notes/actionCreator';
 
 function useNoteService() {
     const list = useTypedSelector(state => state.notes.list);

@@ -3,7 +3,7 @@ import { Content } from 'antd/lib/layout/layout';
 import { useState } from 'react';
 import NoteList from '../../Components/NoteList/NoteList';
 import NoteView from '../../Components/NoteView/NoteView';
-import useNoteService from '../../hooks/useNoteService';
+import useNoteService from '../../shared/hooks/useNoteService';
 import styles from './Notes.module.css';
 import AppHeader from '../../Components/AppHeader/AppHeader';
 
