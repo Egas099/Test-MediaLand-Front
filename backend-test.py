@@ -33,14 +33,25 @@ note_list = [{
     'title': '#Заметка_1',
     'body': 'Тут какой то текст заметки, бла бла бла...',
     'color': '#F00000',
+},
+    {
+    'id': db.incr,
+    'date_create': datetime.strftime(datetime.now(), '%m/%d/%Y %H:%M:%S'),
+    'title': '#Заметка_2',
+    'body': 'Tекст заметки',
+    'color': '#2ab72c',
 }]
+
 
 @app.after_request
 def add_header(response):
     response.headers['Access-Control-Allow-Origin'] = '*'
     response.headers['Access-Control-Allow-Headers'] = 'token'
-    response.headers['Access-Control-Allow-Methods'] = 'PUT'
+    response.headers.add('Access-Control-Allow-Methods', 'PUT')
+    response.headers.add('Access-Control-Allow-Methods', 'DELETE')
+
     return response
+
 
 def token_required(func):
     @wraps(func)
@@ -101,12 +112,12 @@ def note():
         if request.method != 'DELETE':
             if not data.get('title', '') or not data.get('body', '') or not data.get('color', ''):
                 return json.dumps({'error': 'не верный json',
-                                'correct_data': {
-                                    "id": 1,
-                                    "title": "#Заметка_1",
-                                    "body": "Тут какой то текст заметки, бла бла бла...",
-                                    "color": "#F00000"
-                                }}), 502
+                                   'correct_data': {
+                                       "id": 1,
+                                       "title": "#Заметка_1",
+                                       "body": "Тут какой то текст заметки, бла бла бла...",
+                                       "color": "#F00000"
+                                   }}), 502
 
         if request.method in ['PUT', 'DELETE']:
             if not data.get('id'):
@@ -126,7 +137,8 @@ def note():
         return json.dumps({'status': 'ok', 'notes': note}), 202
 
     if request.method == 'PUT':
-        ids_list = next((i for i, item in enumerate(note_list) if item["id"] == data['id']), None)
+        ids_list = next((i for i, item in enumerate(note_list)
+                        if item["id"] == data['id']), None)
 
         if ids_list is None:
             return json.dumps({'error': 'нет такого id заметки в базе данных'}), 501
@@ -139,7 +151,8 @@ def note():
         return json.dumps({'status': 'ok', 'notes': note_list[ids_list]}), 201
 
     if request.method == 'DELETE':
-        ids_list = next((i for i, item in enumerate(note_list) if item["id"] == data['id']), None)
+        ids_list = next((i for i, item in enumerate(note_list)
+                        if item["id"] == data['id']), None)
 
         if ids_list is None:
             return json.dumps({'error': 'нет такого id заметки в базе данных', 'id': data['id']}), 501
