@@ -1,15 +1,15 @@
 import { Avatar, Image, Row, Space } from 'antd';
 import { Header } from 'antd/lib/layout/layout';
-import styles from './AppHeader.module.css';
+import { imageService } from 'shared/api/imageService';
 import {
     useTypedDispatch,
     useTypedSelector
-} from '../../shared/hooks/useTypedRedux';
-import { authActionCreator } from '../../store/reducers/auth/actionCreator';
-import { imageService } from 'shared/api/imageService';
+} from 'shared/hooks/useTypedRedux';
+import { authActionCreator } from 'store/reducers/auth/actionCreator';
+import styles from './AppHeader.module.css';
 const { logout } = authActionCreator;
 
-const AppHeader = () => {
+export const AppHeader = () => {
     const dispatch = useTypedDispatch();
     const username = useTypedSelector(state => state.auth.username);
 
@@ -31,5 +31,3 @@ const AppHeader = () => {
         </Header>
     );
 };
-
-export default AppHeader;

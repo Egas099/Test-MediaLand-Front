@@ -1,8 +1,8 @@
 import User from 'models/user';
 import loginService from 'shared/api/loginService';
 import auth from '.';
-import { AppDispatch } from '../..';
 import { authCache, tryAsync } from 'shared/utils';
+import { AppDispatch } from 'store';
 
 const { setError, setIsAuth, setIsLoading, setUsername } = auth.actions;
 const cache = authCache();

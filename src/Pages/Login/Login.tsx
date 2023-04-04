@@ -1,7 +1,7 @@
 import { Card, Col, Image, Layout, Row, Space } from 'antd';
-import LoginForm from 'Components/LoginForm/LoginForm';
-import styles from './Login.module.css';
 import { imageService } from 'shared/api/imageService';
+import styles from './Login.module.css';
+import { LoginForm } from 'components';
 
 const links = ['Главная', 'Конфиденциальность', 'Условия', 'О портале'];
 
@@ -30,7 +30,11 @@ function Login() {
                     </Row>
                 </Col>
                 <Card className={styles.loginSide}>
-                    <Space className={styles.card} direction="vertical" size="middle">
+                    <Space
+                        className={styles.card}
+                        direction="vertical"
+                        size="middle"
+                    >
                         <div>
                             <h1>Войдите</h1>
                             <h4>

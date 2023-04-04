@@ -1,6 +1,6 @@
 import { Button, Input, Popconfirm, Row, Space } from 'antd';
-import { useEffect, useState } from 'react';
 import { CreateNote, UpdateNote } from 'models/note';
+import { useEffect, useState } from 'react';
 import styles from './NoteView.module.css';
 const { TextArea } = Input;
 
@@ -10,7 +10,7 @@ type Props = {
     onSaveClick: (note: UpdateNote) => void;
 };
 
-const NoteView = ({
+export const NoteView = ({
     note: { id, title, body, color },
     onCancelClick,
     onSaveClick
@@ -107,5 +107,3 @@ const NoteView = ({
         </Space>
     );
 };
-
-export default NoteView;

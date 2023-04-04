@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Note } from '../../../models/note';
+import { Note } from 'models/note';
 import { cacheManager, sortByDataCreate } from './utils';
 
 const cache = cacheManager<Note[]>('notes');

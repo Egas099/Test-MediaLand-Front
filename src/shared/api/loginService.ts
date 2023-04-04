@@ -1,5 +1,5 @@
-import User from '../../models/user';
-import { SERVER_URL, SUCCESS_STATUS } from '../constants';
+import User from 'models/user';
+import { SERVER_URL, SUCCESS_STATUS } from 'shared/constants';
 
 const LOGIN_ROUTE = '/login';
 export interface LoginResponse {

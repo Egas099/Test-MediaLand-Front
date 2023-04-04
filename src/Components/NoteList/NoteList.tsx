@@ -1,7 +1,7 @@
 import { Row, Typography } from 'antd';
 import { Note } from 'models/note';
-import NoteListItem from './NoteListItem/NoteListItem';
 import styles from './NoteList.module.css';
+import NoteListItem from './NoteListItem/NoteListItem';
 
 type Props = {
     noteList: Note[];
@@ -9,7 +9,7 @@ type Props = {
     onCreate: () => void;
 };
 
-const NoteList = ({ noteList, onSelect, onCreate }: Props) => {
+export const NoteList = ({ noteList, onSelect, onCreate }: Props) => {
     return (
         <div className={styles.wrapper}>
             <Row justify="space-between" className={styles.header}>
@@ -28,5 +28,3 @@ const NoteList = ({ noteList, onSelect, onCreate }: Props) => {
         </div>
     );
 };
-
-export default NoteList;

@@ -1,8 +1,6 @@
-import AppHeader from 'Components/AppHeader/AppHeader';
-import NoteList from 'Components/NoteList/NoteList';
-import NoteView from 'Components/NoteView/NoteView';
 import { Col, Layout, Row } from 'antd';
 import { Content } from 'antd/lib/layout/layout';
+import { AppHeader, NoteList, NoteView } from 'components';
 import { UpdateNote } from 'models/note';
 import { useEffect, useState } from 'react';
 import useNoteService from 'shared/hooks/useNoteService';

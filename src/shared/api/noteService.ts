@@ -1,6 +1,6 @@
-import { authCache } from 'shared/utils';
 import { CreateNote, Note, UpdateNote } from 'models/note';
-import { SERVER_URL, SUCCESS_STATUS } from '../constants';
+import { SERVER_URL, SUCCESS_STATUS } from 'shared/constants';
+import { authCache } from 'shared/utils';
 
 const NOTE_ROUTE = '/note';
 type Response<T> = {

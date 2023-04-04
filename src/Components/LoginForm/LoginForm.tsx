@@ -1,13 +1,13 @@
 import { Button, Form, Input } from 'antd';
+import User from 'models/user';
 import {
     useTypedDispatch,
     useTypedSelector
-} from '../../shared/hooks/useTypedRedux';
-import User from '../../models/user';
-import { authActionCreator } from '../../store/reducers/auth/actionCreator';
+} from 'shared/hooks/useTypedRedux';
+import { authActionCreator } from 'store/reducers/auth/actionCreator';
 const { login } = authActionCreator;
 
-const LoginForm = () => {
+export const LoginForm = () => {
     const dispatch = useTypedDispatch();
     const { isLoading, error } = useTypedSelector(state => state.auth);
 
@@ -47,5 +47,3 @@ const LoginForm = () => {
         </Form>
     );
 };
-
-export default LoginForm;
