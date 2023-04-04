@@ -2,18 +2,53 @@
     min-height: 100vh;
 }
 
-.logo {
+.promo {
+    composes: fullHeight;
+    position: relative;
     flex-grow: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+[data-back],
+.promoBack {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    object-fit: cover;
 }
 
 .loginSide {
     composes: fullHeight;
-    flex-grow: 1;
 
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.103);
+}
+
+.card {
+    display: flex;
+    align-items: stretch;
+    margin: 0 48px;
+    gap: 28px;
+}
+
+.links {
+    position: absolute;
+    bottom: 50px;
+    gap: 30px;
+
+    font-weight: 500;
+    font-size: 12px;
 }
