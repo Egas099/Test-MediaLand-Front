@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { authCache } from 'shared/utils';
 
 export type AuthState = {
     isAuth: boolean;
@@ -6,12 +7,13 @@ export type AuthState = {
     error: string;
     username: string;
 };
+const cache = authCache().get();
 
 const initialState: AuthState = {
-    isAuth: Boolean(localStorage.getItem('isAuth')) || false,
+    isAuth: cache.isAuth,
+    username: cache.username || '',
     isLoading: false,
-    error: '',
-    username: localStorage.getItem('username') || ''
+    error: ''
 };
 
 const auth = createSlice({

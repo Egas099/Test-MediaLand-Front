@@ -13,34 +13,30 @@ function handleError(error: unknown, dispatch: AppDispatch) {
 
 export const notesActionCreator = {
     createNote: (createdNote: CreateNote) => async (dispatch: AppDispatch) => {
-        tryAsync<Note>(
+        await tryAsync<Note>(
             () => noteService.createNote(createdNote),
             result => dispatch(addNote(result)),
             error => handleError(error, dispatch)
         );
     },
     readNotes: () => async (dispatch: AppDispatch) => {
-        tryAsync<Note[]>(
-            () => {
-                dispatch(setIsLoading(true));
-                noteService.getNotes();
-            },
-            result => {
-                dispatch(setNotes(result));
-                dispatch(setIsLoading(false));
-            },
+        dispatch(setIsLoading(true));
+        await tryAsync<Note[]>(
+            () => noteService.getNotes(),
+            result => dispatch(setNotes(result)),
             error => handleError(error, dispatch)
         );
+        dispatch(setIsLoading(false));
     },
     updateNote: (updatedNote: UpdateNote) => async (dispatch: AppDispatch) => {
-        tryAsync<Note>(
+        await tryAsync<Note>(
             () => noteService.updateNote(updatedNote),
             result => dispatch(editNote(result)),
             error => handleError(error, dispatch)
         );
     },
     deleteNote: (noteId: number) => async (dispatch: AppDispatch) => {
-        tryAsync<Boolean>(
+        await tryAsync<Boolean>(
             () => noteService.deleteNote(noteId),
             result =>
                 result
