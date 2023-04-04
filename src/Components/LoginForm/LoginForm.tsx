@@ -2,12 +2,9 @@ import { Button, Form, Input } from 'antd';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/useTypedRedux';
 import User from '../../Models/User';
 import { authActionCreator } from '../../store/reducers/auth/actionCreator';
-// import styles from './LoginForm.module.css';
 const { login } = authActionCreator;
 
-type Props = {};
-
-const LoginForm = ({}: Props) => {
+const LoginForm = () => {
     const dispatch = useTypedDispatch();
     const { isLoading, error } = useTypedSelector(state => state.auth);
 

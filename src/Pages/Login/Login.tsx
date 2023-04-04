@@ -1,15 +1,8 @@
 import { Card, Image, Layout, Row } from 'antd';
-import { FormEvent } from 'react';
 import LoginForm from '../../Components/LoginForm/LoginForm';
 import styles from './Login.module.css';
 
-type Props = {};
-
-function Login({}: Props) {
-    function submit(event: FormEvent) {
-        event.preventDefault();
-    }
-
+function Login() {
     return (
         <Layout className={styles.fullHeight}>
             <Row justify="space-between" align="middle">
