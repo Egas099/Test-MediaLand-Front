@@ -2,6 +2,7 @@
     "name": "test-medialand-front",
     "version": "0.1.0",
     "private": true,
+    "homepage": "/task-front-end-react",
     "dependencies": {
         "@reduxjs/toolkit": "^1.8.3",
         "@testing-library/jest-dom": "^5.16.4",
@@ -13,6 +14,7 @@
         "@types/react-dom": "^18.0.6",
         "antd": "^4.22.3",
         "axios": "^0.27.2",
+        "gh-pages": "^5.0.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-redux": "^8.0.2",
@@ -25,7 +27,9 @@
         "backend start": "py backend-test.py",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
     },
     "eslintConfig": {
         "extends": [
