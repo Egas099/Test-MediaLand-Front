@@ -6,8 +6,20 @@ type Props = {
 };
 
 const NoteForm = ({ onSubmit }: Props) => {
+    const [form] = Form.useForm();
+
+    const handleSubmit = (note: CreateNote) => {
+        onSubmit(note);
+        form.resetFields();
+    };
+
     return (
-        <Form id="noteForm" onFinish={onSubmit} layout="vertical">
+        <Form
+            id="noteForm"
+            onFinish={handleSubmit}
+            layout="vertical"
+            form={form}
+        >
             <Form.Item
                 label="Название заметки"
                 name="title"
